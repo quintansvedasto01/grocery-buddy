@@ -7,9 +7,13 @@ const Grocery = () => {
   const item = useRef()
 
   const [groceries, setGroceries] = useState([])
+  const [error, setError] = useState("")
 
   const handleAdditem = () => {
-    if(item.current.value === '') return
+    if(item.current.value === '') {
+      setError("Please add an item first.")
+      return
+    }
     setGroceries([
       ...groceries, 
       {
@@ -17,6 +21,7 @@ const Grocery = () => {
         name: item.current.value
       }
     ])
+    setError("")
     item.current.value = ''
   }
 
@@ -43,8 +48,9 @@ const Grocery = () => {
           <FaShoppingBasket  style={{ color: 'rgb(25, 170, 25)'}}/>
         </h1>
         <div className='input-area'>
-          <input ref={item} type="text" placeholder="Enter Grocery Item" onKeyDown={(e) => e.key === 'Enter' && handleAdditem()}/>
+          <input ref={item} type="text" placeholder="Enter Grocery Item" onKeyDown={(e) => e.key === 'Enter' && handleAdditem()} className={error ? 'input-error' : ''}/>
           <button onClick={handleAdditem} className='add-btn'><FaShoppingCart/></button>
+          {error && <p className='error'>{error}</p>}
         </div>
         <div className='grocery-list'>
           {groceries.map((item) => (
