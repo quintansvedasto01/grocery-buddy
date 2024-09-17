@@ -64,15 +64,16 @@ button{
     max-height: 300px;
 }
 .grocery-item{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 1rem 0;
     border-bottom: 1px solid #d7d7d7;
 }
 .grocery-item span{
-    font-size: 15px;
+    font-size: 17px;
     width: 100%;
     padding: 0.5em;
     border: 1px solid transparent
@@ -82,9 +83,12 @@ button{
     border: none;
     outline: none;
     width: 100%;
-    font-size: 15px;
+    font-size: 17px;
     border: 1px solid #d7d7d7;
     border-radius: 5px;
+}
+.grocery-item input.input-error{
+    border-color: red;
 }
 .grocery-action{
     display: flex;
@@ -120,6 +124,12 @@ button{
 }.grocery-action .save-btn:disabled{
     background-color: #d7d7d7;
     pointer-events: none;
+}
+.grocery-item .error{
+    position: absolute;
+    bottom: 0;
+    color: red;
+    font-size: 12px;
 }
 
 

@@ -21,7 +21,7 @@ const GroceryItem = ({ item, handleEditItem, handleDeleteItem }) => {
   return (
     <div className='grocery-item'>
       {isEdit 
-        ? <input type="text" value={newItem} onChange={(e) => setNewItem(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && onEdit()}/> 
+        ? <input type="text"  className={error ? 'input-error' : ''} value={newItem} onChange={(e) => setNewItem(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && onEdit()}/> 
         : <span>{item.name}</span>
       }
       <div className='grocery-action'>
@@ -39,6 +39,7 @@ const GroceryItem = ({ item, handleEditItem, handleDeleteItem }) => {
           <FaTrashAlt />
         </button>
       </div>
+      {error && <p className='error'>{error}</p>}
     </div>
   )
 }
